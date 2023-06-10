@@ -4,12 +4,12 @@ from src.common.models.rule import Rule
 from flask import current_app as app
 
 
-@app.route('/rule/get_all')
+@app.route('/rules')
 def get_all_rules():
     return {'message': 'New hello message created!'}
 
 
-@app.route('/rule/create', methods=['POST'])
+@app.route('/rules', methods=['POST'])
 def create_rule():
     rule = rule_create(request.json)
     if db_logics.insert_rule(rule):
@@ -17,13 +17,13 @@ def create_rule():
     return 400
 
 
-@app.route('/rule/edit', methods=['PUT'])
-def edite_rule():
+@app.route('/rule/<id>', methods=['PUT'])
+def edite_rule(id):
     return {'message': 'New hello message created!'}
 
 
-@app.route('/rule/delete', methods=['DELETE'])
-def delete_rule():
+@app.route('/rule/<id>', methods=['DELETE'])
+def delete_rule(id):
     return {'message': 'New hello message created!'}
 
 

@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from src.common.models.rule import Rule
 
 
-class DbLogics:
+class RuleProvider:
     def __init__(self, db: SQLAlchemy):
         self.db = db
 
