@@ -1,5 +1,6 @@
 from flask import request
-from src.common.models.rule import Rule, db
+from src import db_logics
+from src.common.models.rule import Rule
 from flask import current_app as app
 
 
@@ -11,9 +12,9 @@ def get_all_rules():
 @app.route('/rule/create', methods=['POST'])
 def create_rule():
     rule = rule_create(request.json)
-    db.session.add(rule)
-    db.session.commit()
-    return {'message': 'New hello message created!'}
+    if db_logics.insert_rule(rule):
+        return 200
+    return 400
 
 
 @app.route('/rule/edit', methods=['PUT'])

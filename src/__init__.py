@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from src.logic.db.db_logics import DbLogics
+
 db = SQLAlchemy()
+db_logics = DbLogics(db)
 
 
 def create_app():
@@ -14,5 +17,5 @@ def create_app():
         from .controllers import rule_controller
 
         db.create_all()
-
+        db_logics = DbLogics(db)
         return app
