@@ -1,5 +1,3 @@
-import json
-
 from flask import request
 from src.common.models.rule import Rule, db
 from flask import current_app as app

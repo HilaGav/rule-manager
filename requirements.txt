@@ -1,2 +1,3 @@
 Flask~=2.2.5
 SQLAlchemy~=2.0.15
+flask-sqlalchemy~=22.3.1
