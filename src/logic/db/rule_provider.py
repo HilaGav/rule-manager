@@ -3,12 +3,18 @@ from src.common.models.rule import Rule
 
 
 class RuleProvider:
-    def __init__(self, db: SQLAlchemy):
-        self.db = db
-
-    def insert_rule(self, rule: Rule):
+    @staticmethod
+    def insert_rule(db: SQLAlchemy, rule: Rule):
         if rule is None:
             return False
-        self.db.session.add(rule)
-        self.db.session.commit()
+        db.session.add(rule)
+        db.session.commit()
+        return True
+
+    @staticmethod
+    def update_rule(db: SQLAlchemy, new_rule: Rule, rule_name):
+        if new_rule is None:
+            return False
+        db.session.query(Rule.rule_name is rule_name).update(new_rule)
+        db.session.commit()
         return True
