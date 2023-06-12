@@ -20,15 +20,15 @@ def create_rule():
     return "Failed create rule", 500
 
 
-@app.route('/rules/<name>', methods=['PUT'])
-def edite_rule(name):
+@app.route('/rules/<id>', methods=['PUT'])
+def edite_rule(id):
     rule = rule_create(request.json)
-    rule_manager.update_rule(rule, name)
+    rule_manager.update_rule(rule, id)
     return {'message': 'New hello message created!'}
 
 
-@app.route('/rules/<name>', methods=['DELETE'])
-def delete_rule(name):
+@app.route('/rules/<id>', methods=['DELETE'])
+def delete_rule(id):
     return {'message': 'New hello message created!'}
 
 

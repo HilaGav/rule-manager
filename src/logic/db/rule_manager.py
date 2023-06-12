@@ -15,11 +15,9 @@ class RulesManager:
         self.db.session.commit()
         return True
 
-    def update_rule(self, new_rule: Rule, rule_name):
+    def update_rule(self, new_rule: Rule, id):
         if new_rule is None:
             return False
-        self.db.session.query(RuleEntity).filter(RuleEntity.rule_name is rule_name).update(self.rule_to_rule_entity
-                                                                                           (new_rule))
         self.db.session.commit()
         return True
 
